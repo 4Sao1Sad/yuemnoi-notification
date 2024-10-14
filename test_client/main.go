@@ -6,11 +6,13 @@ import (
 	"log"
 	"time"
 	"yuemnoi-notification/dto"
+	"yuemnoi-notification/internal/config"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
+	cfg := config.Load()
 	notification := dto.NotificationRequest{
 		Message: "hello notification",
 		UserIds: []int{1},
@@ -22,7 +24,7 @@ func main() {
 		log.Fatalf("[client]: failed to marshal notification %+v", err)
 	}
 
-	conn, err := amqp.Dial("amqps://fdnesexk:oATQpfEYx_9QHrQjv1O9WftUaOSvheub@octopus.rmq3.cloudamqp.com/fdnesexk")
+	conn, err := amqp.Dial(cfg.RabbitMQUrl)
 	if err != nil {
 		log.Fatalf("[client]: unable to connect RabbitMQ %+v", err)
 	}
