@@ -22,7 +22,7 @@ func NewPushNotificationEvent(UserDeviceRepository repository.UserDeviceReposito
 }
 
 func (h PushNotificationEvent) PushNotification(ctx context.Context, cfg *config.Config) {
-	queueName := "hello"
+	queueName := "notification"
 
 	conn, err := amqp.Dial(cfg.RabbitMQUrl)
 	if err != nil {
