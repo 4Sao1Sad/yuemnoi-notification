@@ -92,7 +92,7 @@ func (h PushNotificationEvent) PushNotification(ctx context.Context, cfg *config
 					message := &messaging.Message{
 						Token: token.DeviceToken,
 						Notification: &messaging.Notification{
-							Title: "Hello11111111",
+							Title: "Notification",
 							Body:  "This is a push notification",
 						},
 					}
