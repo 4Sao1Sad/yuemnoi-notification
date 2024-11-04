@@ -1,9 +1,0 @@
-app_name: user-tokens
-port: 8084
-DB:
-  host: localhost
-  port: "5434"
-  username: youruser
-  password: yourpassword
-  database: notificationdb
-rabbitmqurl: amqps://fdnesexk:oATQpfEYx_9QHrQjv1O9WftUaOSvheub@octopus.rmq3.cloudamqp.com/fdnesexk
