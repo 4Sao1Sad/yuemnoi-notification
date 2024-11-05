@@ -35,5 +35,5 @@ func main() {
 
 	handler.RegisterRouter(app, cfg)
 
-	app.Listen(cfg.Db.Host + ":" + strconv.Itoa(int(cfg.Port)))
+	app.Listen(":" + strconv.Itoa(int(cfg.Port)))
 }

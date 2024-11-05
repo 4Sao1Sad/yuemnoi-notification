@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	AppName     string `yaml:"appname"`
+	Host        string `mapstructure:"host"`
 	Port        int32  `yaml:"port"`
 	Db          DB     `mapstructure:"DB"`
 	RabbitMQUrl string `yaml:"rabbitmqurl"`
