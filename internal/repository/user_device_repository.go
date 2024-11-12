@@ -4,6 +4,7 @@ import (
 	"yuemnoi-notification/internal/model"
 
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 type UserDeviceRepository interface {
@@ -20,7 +21,10 @@ func NewUserDeviceRepository(db *gorm.DB) UserDeviceRepository {
 }
 
 func (i UserDeviceRepositoryImpl) CreateUserDevice(device model.UserDevice) error {
-	if err := i.db.Create(&device).Error; err != nil {
+	if err := i.db.Clauses(clause.OnConflict{
+		Columns:   []clause.Column{{Name: "user_id"}, {Name: "device_token"}}, // Specify columns for conflict
+		DoUpdates: clause.AssignmentColumns([]string{"updated_at"}),           // Only update the UpdatedAt field on conflict
+	}).Create(&device).Error; err != nil {
 		return err
 	}
 	return nil
