@@ -87,13 +87,12 @@ func (h PushNotificationEvent) PushNotification(ctx context.Context, cfg *config
 					continue
 				}
 
-				fmt.Println("tokens", tokens)
 				for _, token := range tokens {
 					message := &messaging.Message{
 						Token: token.DeviceToken,
 						Notification: &messaging.Notification{
 							Title: "Notification",
-							Body:  "This is a push notification",
+							Body:  notification.Message,
 						},
 					}
 
